@@ -3,7 +3,7 @@ from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 
-from db.users import get_or_create_user
+from database.users import get_or_create_user
 
 router = Router()
 

@@ -8,7 +8,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from handlers.start import start_handler
-from db.users import update_city
+from database.users import update_city
 
 router = Router()
 

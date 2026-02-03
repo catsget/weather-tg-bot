@@ -12,7 +12,7 @@ from aiogram.fsm.storage.redis import RedisStorage
 from redis.asyncio import Redis
 
 from handlers import register_routes
-from db.database import init_db
+from database import init_db
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")

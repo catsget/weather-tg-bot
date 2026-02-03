@@ -3,7 +3,7 @@ from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
 from services.weather_api import get_weather
-from db.users import get_city
+from database.users import get_city
 
 router = Router()
 

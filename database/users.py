@@ -1,4 +1,4 @@
-import db.database as db
+import database as db
 
 
 async def get_user(telegram_id: int):
