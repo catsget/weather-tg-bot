@@ -23,9 +23,9 @@ async def get_weather_handler(message: Message, state: FSMContext):
             await message.answer(
                 f"{city}\n\n{html.bold('Температура')}\n{int(weather_info['main']['temp'])} градусов\n\n{html.bold('Скорость ветра')}\n{int(weather_info['wind']['speed'])} м/с\n\n{html.bold('Влажность')}\n{weather_info['main']['humidity']}%\n\n{html.bold('Атмосферное давление')}\n{int(weather_info['main']['pressure'] * 0.75006)}мм ртутного столба\n\n{html.bold('Погода')}\n{format_weather(weather_info['weather'][0]['main'])}"
             )
-            await state.clear()
         else:
-            await message.answer("Город не указан или не существует")
+            await message.answer("Город не существует")
+            await change_city(message, state)
     else:
         await message.answer("Пожалуйста, укажите город")
         await change_city(message, state)
