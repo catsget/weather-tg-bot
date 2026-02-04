@@ -3,6 +3,7 @@ from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
 from services.weather_api import get_weather
+from services.weather_formatter import format_weather
 from database.users import get_city
 
 router = Router()
@@ -20,7 +21,7 @@ async def get_weather_handler(message: Message, state: FSMContext):
             weather_info = weather["list"][0]
 
             await message.answer(
-                f"{city}\n\n{html.bold('Температура')}\n{int(weather_info['main']['temp'])} градусов\n\n{html.bold('Скорость ветра')}\n{int(weather_info['wind']['speed'])} м/с"
+                f"{city}\n\n{html.bold('Температура')}\n{int(weather_info['main']['temp'])} градусов\n\n{html.bold('Скорость ветра')}\n{int(weather_info['wind']['speed'])} м/с\n\n{html.bold('Влажность')}\n{weather_info['main']['humidity']}%\n\n{html.bold('Атмосферное давление')}\n{int(weather_info['main']['pressure'] * 0.75006)}мм ртутного столба\n\n{html.bold('Погода')}\n{format_weather(weather_info['weather'][0]['main'])}"
             )
             await state.clear()
         else:
