@@ -5,6 +5,7 @@ from aiogram.fsm.context import FSMContext
 from services.weather_api import get_weather
 from services.weather_formatter import format_weather
 from database.users import get_city
+from handlers.change_city import change_city
 
 router = Router()
 
@@ -13,7 +14,6 @@ router = Router()
 async def get_weather_handler(message: Message, state: FSMContext):
     user_id = message.from_user.id
     city = (await get_city(user_id))[0]
-
     if city:
         weather = await get_weather(city)
 
@@ -26,3 +26,6 @@ async def get_weather_handler(message: Message, state: FSMContext):
             await state.clear()
         else:
             await message.answer("Город не указан или не существует")
+    else:
+        await message.answer("Пожалуйста, укажите город")
+        await change_city(message, state)
