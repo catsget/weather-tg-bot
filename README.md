@@ -1,5 +1,15 @@
 ## Weather Telegram Bot
+### About
+Asynchronous bot written with libraries: **aiogram**, **asyncpg** \
+Using OpenWeatherMap API
 
+You need create table **users** for working database
+```
+CREATE TABLE users (
+  user_id BIGINT PRIMARY KEY,
+  user_city VARCHAR(30)
+)
+```
 ### Requirements
 - Python 3.10+
 - PostgreSQL
